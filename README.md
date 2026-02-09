@@ -2,6 +2,8 @@
 
 Cohort-based retention analysis using GA4 data to evaluate user engagement, lifecycle behavior, and acquisition channel performance.
 
+📊 Dashboard: https://lookerstudio.google.com/reporting/4cfbba77-4e28-411c-bb97-a86ffffb00e9 
+
 ---
 
 ## 📊 Project Overview
@@ -21,6 +23,18 @@ The goal is to identify early churn trends and provide actionable insights for i
 
 ---
 
+## 🔄 Data Pipeline
+
+GA4 → BigQuery → SQL Modeling → Looker Studio → GitHub
+
+1. Extracted raw GA4 event data
+2. Built master cohort table in BigQuery
+3. Modeled retention metrics in SQL
+4. Validated calculations
+5. Visualized results in Looker Studio
+
+---
+
 ## 📁 Data Source
 
 - Google Analytics 4 Public Ecommerce Dataset
@@ -31,14 +45,32 @@ The goal is to identify early churn trends and provide actionable insights for i
 
 ---
 
+📂 SQL Structure
+
+| File | Purpose |
+|------|----------|
+| 01_master_cohort.sql | Build base cohort table |
+| 02_retention_curve.sql | Generate retention metrics |
+| 03_heatmap.sql | Prepare cohort heatmap data |
+| 04_validation.sql | Validate calculations |
+
+---
+
+## 📂 Repository Structure
+
+sql/ → BigQuery cohort queries
+data/ → Sample datasets
+visuals/ → Dashboard screenshots
+docs/ → Detailed methodology
+
+---
+
 ## ⚙️ Methodology
 
 - Cohorts defined by first activity date
 - Week number calculated using date difference from first touch
 - Cohort size = distinct users in Week 0
 - Retention formula: Retention Rate (Week N) = Active Users in Week N / Users in Week 0
-
-
 - Retention stored as proportions (0–1)
 - Aggregated using averages for consistency
 
@@ -86,15 +118,6 @@ Built in Looker Studio:
 ## 📎 Dashboard
 
 🔗 (https://lookerstudio.google.com/reporting/4cfbba77-4e28-411c-bb97-a86ffffb00e9)
-
----
-
-## 📂 Repository Structure
-
-sql/ → BigQuery cohort queries
-data/ → Sample datasets
-visuals/ → Dashboard screenshots
-docs/ → Detailed methodology
 
 ---
 
