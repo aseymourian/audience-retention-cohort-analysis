@@ -1,107 +1,145 @@
 # Audience Retention Cohort Analysis
 
-Cohort-based retention analysis using GA4 data to evaluate user engagement, lifecycle behavior, and acquisition channel performance.
+Cohort-based retention analysis using Google Analytics 4 data to evaluate post-acquisition user engagement, lifecycle behavior, and acquisition channel performance.
 
-📊 Dashboard: https://lookerstudio.google.com/reporting/4cfbba77-4e28-411c-bb97-a86ffffb00e9 
-
----
-
-## 📊 Project Overview
-
-This project analyzes how user engagement declines over time after acquisition and compares retention patterns across cohort months and acquisition channels.
-
-The goal is to identify early churn trends and provide actionable insights for improving onboarding and lifecycle marketing.
+📊 Dashboard: https://lookerstudio.google.com/reporting/4cfbba77-4e28-411c-bb97-a86ffffb00e9
 
 ---
 
-## 🎯 Objective
+# 📌 Project Overview
 
-- Measure post-acquisition retention by cohort
-- Compare retention across months and channels
+This project analyzes how user engagement declines over time after acquisition and compares retention patterns across different cohort months and acquisition channels.
+
+The analysis focuses on users acquired between **November 2020 and January 2021**, covering over **800,000 users** and tracking engagement behavior across the first **three weeks** of activity.
+
+A cohort-based framework was used to evaluate early churn, identify high-performing segments, and assess the effectiveness of acquisition channels.
+
+---
+
+# 🎯 Objective
+
+- Measure post-acquisition retention by cohort month
+- Compare engagement trends across acquisition channels
 - Identify early drop-off patterns
-- Support lifecycle optimization decisions
+- Evaluate short-term user lifecycle performance
+- Generate actionable recommendations for retention improvement
 
 ---
 
-## 🔄 Data Pipeline
+## 📊 Data Source
 
-GA4 → BigQuery → SQL Modeling → Looker Studio → GitHub
-
-1. Extracted raw GA4 event data
-2. Built master cohort table in BigQuery
-3. Modeled retention metrics in SQL
-4. Validated calculations
-5. Visualized results in Looker Studio
-
----
-
-## 📁 Data Source
-
-- Google Analytics 4 Public Ecommerce Dataset
-- Extracted using Google BigQuery
-- User-level event data:
+- Google Analytics 4 Public E-commerce Dataset
+- Extracted via BigQuery
+- Event-level data including:
   - `session_start`
   - `user_engagement`
+- Time period: **2020–2021**
+
+Users were assigned to cohorts based on their first recorded engagement event.
 
 ---
 
-📂 SQL Structure
+## 🧮 Methodology
 
-| File | Purpose |
-|------|----------|
-| 01_master_cohort.sql | Build base cohort table |
-| 02_retention_curve.sql | Generate retention metrics |
-| 03_heatmap.sql | Prepare cohort heatmap data |
-| 04_validation.sql | Validate calculations |
+### Cohort Definition
+- Cohorts defined by users’ first activity month
+- Example: 2020-11, 2020-12, 2021-01
+  
+---
+
+### Week Assignment
+- Week number calculated using date difference from first engagement
+- Week 0 = First interaction
+- Weeks 1–3 = Subsequent engagement periods
 
 ---
 
-## 📂 Repository Structure
+### Retention Calculation
 
-sql/ → BigQuery cohort queries
-data/ → Sample datasets
-visuals/ → Dashboard screenshots
-docs/ → Detailed methodology
+Retention was calculated as: Retention Rate = Active Users in Week N / Cohort Size (Week 0)
+
+
+Values were stored as proportions (0–1) and displayed as percentages.
+
+### Aggregation
+- Retention metrics aggregated using averages
+- Ensured consistency across cohorts and channels
 
 ---
 
-## ⚙️ Methodology
-
-- Cohorts defined by first activity date
-- Week number calculated using date difference from first touch
-- Cohort size = distinct users in Week 0
-- Retention formula: Retention Rate (Week N) = Active Users in Week N / Users in Week 0
-- Retention stored as proportions (0–1)
-- Aggregated using averages for consistency
+### Data Processing
+- SQL (BigQuery) used for data extraction and transformation
+- Power Query used for cleaning and validation
+- Looker Studio used for visualization
 
 ---
 
 ## 📈 Visualization Design
 
-Built in Looker Studio:
+Dashboards were built in Looker Studio with the following structure:
 
 - X-axis: Week since acquisition
 - Y-axis: Average retention (%)
 - Series: Cohort month
-- Filters: Cohort month, acquisition channel
+- Filters:
+  - Cohort Month
+  - Acquisition Channel
+
+Key visuals include:
+- Retention curve line charts
+- Channel comparison charts
+- Cohort heatmaps
+- Summary KPI cards
 
 ---
 
 ## 🔍 Key Findings
 
-- Significant drop-off between Week 1 and Week 2
-- No cohort stabilized within first 3 weeks
-- Large performance variance across cohorts
-- Top cohort retained 2× average users
+- All cohorts experienced major drop-off between Week 1 and Week 2
+- Average retention declined from **3.84% (Week 1)** to **2.03% (Week 3)** in the best-performing cohort
+- The January 2021 cohort showed the lowest retention, falling below **0.2% by Week 3**
+- Referral and organic channels consistently outperformed paid channels
+- High-performing cohorts retained more than **2× the average user base**
+- No cohort demonstrated long-term stabilization within the first three weeks
 
 ---
 
 ## 💼 Business Implications
 
-- Early lifecycle engagement is critical
-- Onboarding should focus on first 14 days
-- High-performing cohorts should be analyzed
-- Lifecycle campaigns can improve retention
+- The first two weeks represent the most critical engagement window
+- Users who disengage early are unlikely to return
+- Channel quality has a significant impact on lifecycle value
+- Short-term retention is a strong predictor of long-term performance
+
+---
+
+## ✅ Recommendations
+
+Based on the analysis, the following actions are recommended:
+
+### 1. Optimize Early Onboarding
+Focus on improving user activation within the first 7–14 days through:
+- Guided onboarding flows
+- Personalized welcome campaigns
+- Early feature education
+
+### 2. Prioritize High-Performing Channels
+Increase investment in referral and organic acquisition channels, which demonstrated stronger retention performance.
+
+### 3. Improve Paid Channel Quality
+Re-evaluate paid acquisition strategies to:
+- Reduce low-quality traffic
+- Improve targeting
+- Align messaging with user intent
+
+### 4. Implement Early Engagement Triggers
+Deploy automated interventions when users show signs of early disengagement, such as:
+- Reminder emails
+- In-app prompts
+- Targeted content recommendations
+
+### 5. Monitor Cohort Performance Continuously
+Establish regular cohort reporting to detect early changes in engagement patterns and adjust strategies proactively.
 
 ---
 
@@ -115,11 +153,20 @@ Built in Looker Studio:
 
 ---
 
-## 📎 Dashboard
+## 📂 Repository Structure
 
-🔗 (https://lookerstudio.google.com/reporting/4cfbba77-4e28-411c-bb97-a86ffffb00e9)
+/sql
+├── 01_master_cohort.sql
+├── 02_retention_curve.sql
+├── 03_heatmap.sql
+└── 04_validation.sql
 
----
+/images
+├── retention_curve.jpg
+├── heatmap.jpg
+└── channel_comparison.jpg
+
+Each SQL file represents a stage in the analytical pipeline from data extraction to validation.
 
 ## 👩‍💻 Author
 
