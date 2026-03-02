@@ -8,13 +8,22 @@ Cohort-based retention analysis using Google Analytics 4 data to evaluate post-a
 
 # 📌 Project Overview
 
-This project analyzes how user engagement declines over time after acquisition and compares retention patterns across different cohort months and acquisition channels.
+This project uses Google Analytics 4 public ecommerce event data available through BigQuery.
+The dataset models real-world web and app behavior, including session_start and user_engagement events from an ecommerce site similar to the Google Merchandise Store.
+Event-level data was used to construct user cohorts, track weekly engagement, and evaluate early retention patterns.
 
 The analysis focuses on users acquired between **November 2020 and January 2021**, covering over **800,000 users** and tracking engagement behavior across the first **three weeks** of activity.
 
 A cohort-based framework was used to evaluate early churn, identify high-performing segments, and assess the effectiveness of acquisition channels.
 
----
+## Executive Summary
+
+This analysis answers the question:
+**How quickly do users disengage after their first interaction, and which acquisition channels and cohort months retain users most effectively?**
+
+Using GA4 event-level ecommerce data (Nov 2020–Jan 2021), I built cohort retention models to identify early churn patterns and evaluate channel performance.
+
+The findings show that most user drop-off occurs within the first two weeks, with significant retention variance across cohorts and acquisition channels. These insights can inform onboarding optimization, lifecycle marketing, and acquisition strategy decisions.
 
 # 🎯 Objective
 
