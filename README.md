@@ -1,4 +1,4 @@
-# Audience Retention Cohort Analysis
+# Analyzing Early User Retention in GA4 Ecommerce Data to Identify Lifecycle Drop-Off and Channel Performance
 
 Cohort-based retention analysis using Google Analytics 4 data to evaluate post-acquisition user engagement, lifecycle behavior, and acquisition channel performance.
 
