@@ -2,11 +2,11 @@
 
 Cohort-based retention analysis using Google Analytics 4 data to evaluate post-acquisition user engagement, lifecycle behavior, and acquisition channel performance.
 
-📊 Dashboard: https://lookerstudio.google.com/reporting/4cfbba77-4e28-411c-bb97-a86ffffb00e9
+Dashboard: https://lookerstudio.google.com/reporting/4cfbba77-4e28-411c-bb97-a86ffffb00e9
 
 ---
 
-# 📌 Project Overview
+# Project Overview
 
 This project uses Google Analytics 4 public ecommerce event data available through BigQuery.
 The dataset models real-world web and app behavior, including session_start and user_engagement events from an ecommerce site similar to the Google Merchandise Store.
@@ -25,7 +25,7 @@ Using GA4 event-level ecommerce data (Nov 2020–Jan 2021), I built cohort reten
 
 The findings show that most user drop-off occurs within the first two weeks, with significant retention variance across cohorts and acquisition channels. These insights can inform onboarding optimization, lifecycle marketing, and acquisition strategy decisions.
 
-# 🎯 Objective
+# Objective
 
 - Measure post-acquisition retention by cohort month
 - Compare engagement trends across acquisition channels
@@ -35,7 +35,7 @@ The findings show that most user drop-off occurs within the first two weeks, wit
 
 ---
 
-## 📊 Data Source
+## Data Source
 
 - Google Analytics 4 Public E-commerce Dataset
 - Extracted via BigQuery
@@ -48,7 +48,7 @@ Users were assigned to cohorts based on their first recorded engagement event.
 
 ---
 
-## 🧮 Methodology
+## Methodology
 
 ### Cohort Definition
 - Cohorts defined by users’ first activity month
@@ -83,7 +83,7 @@ Values were stored as proportions (0–1) and displayed as percentages.
 
 ---
 
-## 📈 Visualization Design
+## Visualization Design
 
 Dashboards were built in Looker Studio with the following structure:
 
@@ -102,7 +102,7 @@ Key visuals include:
 
 ---
 
-## 🔍 Key Findings
+## Key Findings
 
 - All cohorts experienced major drop-off between Week 1 and Week 2
 - Average retention declined from **3.84% (Week 1)** to **2.03% (Week 3)** in the best-performing cohort
@@ -113,7 +113,7 @@ Key visuals include:
 
 ---
 
-## 💼 Business Implications
+## Business Implications
 
 - The first two weeks represent the most critical engagement window
 - Users who disengage early are unlikely to return
@@ -122,7 +122,7 @@ Key visuals include:
 
 ---
 
-## ✅ Recommendations
+## Recommendations
 
 Based on the analysis, the following actions are recommended:
 
@@ -152,7 +152,7 @@ Establish regular cohort reporting to detect early changes in engagement pattern
 
 ---
 
-## 🛠 Tools Used
+## Tools Used
 
 - SQL (BigQuery)
 - Google Analytics 4
@@ -162,7 +162,7 @@ Establish regular cohort reporting to detect early changes in engagement pattern
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 /sql
 ├── 01_master_cohort.sql
@@ -177,7 +177,7 @@ Establish regular cohort reporting to detect early changes in engagement pattern
 
 Each SQL file represents a stage in the analytical pipeline from data extraction to validation.
 
-## 👩‍💻 Author
+## Author
 
 Ariana Seymourian  
 MS Business Analytics — UMass Amherst Isenberg School of Management
